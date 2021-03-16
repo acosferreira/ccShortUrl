@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+<%= render 'form', short_url: @new_short_url %>
+<h1>Short Urls</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Original url</th>
+      <th>Shortened url</th>
+      <th>Full url</th>
+      <th>Visitors</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @short_urls.each do |short_url| %>
+      <tr>
+        <td><%= short_url.original_url %></td>
+        <td><%= link_to  short_url.shortened_url, short_url, target: :_blank %></td>
+        <td><%= short_url.full_url %></td>
+        <td><%= short_url.visitor_shortened_urls.size%>
+        <td><%= link_to 'Show', info_path(short_url:short_url.id) %></td>
+        <td><%= link_to 'Edit', edit_short_url_path(short_url) %></td>
+        <td><%= link_to 'Destroy', short_url, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

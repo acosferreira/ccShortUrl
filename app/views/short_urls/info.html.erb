@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <strong>Shortened url:</strong>
+  <%= link_to  @visit.shortened_url, @visit, target: :_blank %>
+</p>
+
+<p>
+  <strong>Full url:</strong>
+  <%= @visit.full_url %>
+</p>
+
+
+<h2>URL Visitors</h2>
+<table>
+  <% if @visit.visitor_shortened_urls.present? %>
+	  
+	  <% @visit.visitor_shortened_urls.each do |visitor| %>
+	  	<tr>
+	  		<td>IP Address: <%= visitor.ip_request %></td>
+	  		<td> <%= visitor.created_at%></td>
+	  	</tr>
+	  <% end %>
+	
+  <% else %>
+	    <tr><td>No visitors yet!</td></tr>
+	  <% end %>
+</table>
+<%= link_to 'Back', short_urls_path %>

@@ -1,0 +1,2 @@
+module VisitorShortenedUrlsHelper
+end
